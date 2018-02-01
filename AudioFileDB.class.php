@@ -712,8 +712,36 @@ class AudioFileDB {
     }
 
 // Function that generates a rss feed file / xml format
-// TODO: needs to be coded
-    function update_rss_feed() {
+    function generate_rss_podcast_feed() {
+        //Open new file to write
+        $rss_feed_file = new SplFileObject("../ccnice_rss.xml","w");
+
+        // Retrieve the 100 most recent entries
+        $result = $this->pdo->query('SELECT * FROM files WHERE publishedfile = 1 ORDER BY date DESC LIMIT 100');
+
+        // Write the head of the file
+        $feed_head = ''; //TODO
+
+        // Build item list
+        
+        // Build feed tail
+        $feed_tail = '</channel></rss>';
+
+        // Concatenate the 3 parts and then write to the file
+
+
+
+        $rss_feed_file->fwrite($rss_feed);
+        $rss_feed_file = null;
+
+        return;
+    }
+
+    function generate_itunes_rss_podcast_feed() {
+
+    }
+
+    function generate_json_podcast_feed() {
 
     }
 
